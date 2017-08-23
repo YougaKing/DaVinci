@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#191919">
+
+    <GridView
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:horizontalSpacing="@dimen/space_size"
+        android:numColumns="3"
+        android:overScrollMode="always"
+        android:scrollbars="none"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/space_size" />
+
+    <TextView
+        android:id="@+id/timeline_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8810110B"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10sp"
+        android:paddingTop="5dp"
+        android:textColor="#CDCECE"
+        android:textSize="14sp"
+        tools:text="2015年4月1日" />
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:background="#EE2D3235"
+        android:clickable="true">
+
+        <Button
+            android:id="@+id/category_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:drawablePadding="5dp"
+            android:drawableRight="@mipmap/text_indicator"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:singleLine="true"
+            android:textAllCaps="false"
+            android:textColor="@color/folder_text_color"
+            android:textSize="16sp"
+            tools:text="@string/folder_all" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/preview"
+            android:background="#000000" />
+
+        <Button
+            android:id="@+id/preview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:minHeight="1dp"
+            android:minWidth="1dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/preview"
+            android:textColor="@color/default_text_color"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
