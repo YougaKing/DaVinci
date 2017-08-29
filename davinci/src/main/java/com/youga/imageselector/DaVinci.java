@@ -1,8 +1,13 @@
 package com.youga.imageselector;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
+import android.widget.Toast;
+
+import com.youga.imageselector.util.StorageUtils;
 
 /**
  * Created by Youga on 2017/8/23.
@@ -11,7 +16,7 @@ import android.support.annotation.NonNull;
 
 public class DaVinci {
 
-    Configuration configuration = new Configuration();
+    private Configuration configuration = new Configuration();
 
     private DaVinci() {
     }
@@ -41,13 +46,44 @@ public class DaVinci {
     }
 
     public void openCamera() {
-
+        Intent intent = new Intent(context, MediaActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(MediaActivity.EXTRA_CONFIGURATION, configuration);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
 
     public void openAlbum() {
-
+        Intent intent = new Intent(context, MediaActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(MediaActivity.EXTRA_CONFIGURATION, configuration);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
+
+    /**
+     * 执行
+     */
+    private void execute() {
+        Context context = configuration.getContext();
+        if (context == null) {
+            return;
+        }
+        if (!StorageUtils.existSDcard()) {
+            Toast.makeText(context, "没有找到SD卡", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Intent intent = new Intent(context, VinciActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(VinciActivity.EXTRA_CONFIGURATION, configuration);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
 
 }
